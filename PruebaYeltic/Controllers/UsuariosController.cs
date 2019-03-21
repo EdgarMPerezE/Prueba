@@ -68,6 +68,7 @@ namespace PruebaYeltic.Controllers
 
         // POST: Actualizar
         [HttpPost]
+        // holis
         [ValidateAntiForgeryToken]
         public ActionResult Actualizar([Bind(Include = "idUsuario, idSucursal, idPuesto, varNombre, varPrimerApellido, varSegundoApellido, varSexo, bitActivo")] Usuarios usuarios)
         {
