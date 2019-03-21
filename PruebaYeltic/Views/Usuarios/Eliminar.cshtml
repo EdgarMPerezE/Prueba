@@ -1,0 +1,67 @@
+﻿@model PruebaYeltic.Models.Usuarios
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Eliminar Alumno";
+}
+
+<h2>Eliminar Alumno</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idUsuario)
+        </dd>
+
+        <dt>
+            NOMBRE COMPLETO
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.varNombre)        
+            @Html.DisplayFor(model => model.varPrimerApellido)        
+            @Html.DisplayFor(model => model.varSegundoApellido)
+        </dd>
+
+        <dt>
+            SEXO
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.varSexo)
+        </dd>
+
+        <dt>
+            PUESTO
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CatPuestos.varPuesto)
+        </dd>
+
+        <dt>
+            SUCURSAL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CatSucursales.idSucursal)
+            @Html.DisplayFor(model => model.CatSucursales.varSursal)
+            <br />
+            @Html.DisplayFor(model => model.CatSucursales.varDireccion)
+        </dd>   
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Regresar a Lista", "Lista", new { id = "" }, new { @class = "btn btn-default" })
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>

@@ -68,7 +68,6 @@ namespace PruebaYeltic.Controllers
 
         // POST: Actualizar
         [HttpPost]
-        // holis
         [ValidateAntiForgeryToken]
         public ActionResult Actualizar([Bind(Include = "idUsuario, idSucursal, idPuesto, varNombre, varPrimerApellido, varSegundoApellido, varSexo, bitActivo")] Usuarios usuarios)
         {
@@ -82,5 +81,34 @@ namespace PruebaYeltic.Controllers
             ViewBag.idSucursal = new SelectList(db.CatSucursales, "idSucursal", "varSursal", usuarios.idSucursal);
             return View(usuarios);
         }
+
+        // GET: CatCamiones/Delete/5
+        public ActionResult Eliminar(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuarios usuarios = db.Usuarios.Find(id);
+            if (usuarios == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuarios);
+        }
+
+        // POST: CatCamiones/Delete/5
+        [HttpPost, ActionName("Eliminar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {            
+            Usuarios usuarios = db.Usuarios.Find(id);
+            usuarios.bitActivo = false;
+            db.Entry(usuarios).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

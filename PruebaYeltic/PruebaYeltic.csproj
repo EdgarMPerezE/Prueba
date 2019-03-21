@@ -247,6 +247,7 @@
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Crear.cshtml" />
     <Content Include="Views\Usuarios\Actualizar.cshtml" />
+    <Content Include="Views\Usuarios\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
