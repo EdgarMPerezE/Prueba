@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_PruebaYelticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CatPuestos">
+    <Key>
+      <PropertyRef Name="idPuesto" />
+    </Key>
+    <Property Name="idPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="varPuesto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_CatPuestos" FromRole="CatPuestos" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="CatSucursales">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="varSursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="varDireccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_CatSucursales" FromRole="CatSucursales" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSucursal" Type="Int32" Nullable="false" />
+    <Property Name="idPuesto" Type="Int32" Nullable="false" />
+    <Property Name="varNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="varPrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="varSegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="varSexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bitActivo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CatPuestos" Relationship="Self.FK_Usuarios_CatPuestos" FromRole="Usuarios" ToRole="CatPuestos" />
+    <NavigationProperty Name="CatSucursales" Relationship="Self.FK_Usuarios_CatSucursales" FromRole="Usuarios" ToRole="CatSucursales" />
+  </EntityType>
+  <Association Name="FK_Usuarios_CatPuestos">
+    <End Role="CatPuestos" Type="Self.CatPuestos" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatPuestos">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_CatSucursales">
+    <End Role="CatSucursales" Type="Self.CatSucursales" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatSucursales">
+        <PropertyRef Name="idSucursal" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BD_PruebaYelticEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CatPuestos" EntityType="Self.CatPuestos" />
+    <EntitySet Name="CatSucursales" EntityType="Self.CatSucursales" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Usuarios_CatPuestos" Association="Self.FK_Usuarios_CatPuestos">
+      <End Role="CatPuestos" EntitySet="CatPuestos" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_CatSucursales" Association="Self.FK_Usuarios_CatSucursales">
+      <End Role="CatSucursales" EntitySet="CatSucursales" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

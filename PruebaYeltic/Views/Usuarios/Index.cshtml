@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PruebaYeltic.Models.Usuarios>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Administrar Usuarios";
+}
+
+<h2>Administrar Usuarios</h2>
+
+<table class="table">
+    <tr>
+        <th class="text-center">
+            ID Usuario
+        </th>
+        <th class="text-center">
+            Nombre Usuario
+        </th>
+        <th class="text-center">
+            Sexo
+        </th>
+        <th class="text-center">
+            Puesto
+        </th>
+        <th class="text-center">
+            Sucursal
+        </th>
+        <th class="text-center">
+            @Html.ActionLink("Pasar a Registrar Nuevo Usuario", "Crear", new { id = "" }, new { @class = "btn btn-success" })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.idUsuario)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.varNombre)
+                @Html.DisplayFor(modelItem => item.varPrimerApellido)
+                @Html.DisplayFor(modelItem => item.varSegundoApellido)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.varSexo)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.CatPuestos.varPuesto)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.CatSucursales.idSucursal)
+                @Html.DisplayFor(modelItem => item.CatSucursales.varSursal)
+                <br />
+                @Html.DisplayFor(modelItem => item.CatSucursales.varDireccion)
+            </td>
+            <td class="text-center">
+                Espera
+                @Html.ActionLink("Actualizar", "Actualizar", new { id = item.idUsuario }, new { @class = "btn btn-default btn-sm" })
+                &nbsp;
+                @*@Html.ActionLink("Detalles", "Details", new { id = item.idPiloto }, new { @class = "btn btn-info btn-sm" })*@
+                &nbsp;
+                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.idPiloto }, new { @class = "btn btn-danger btn-sm" })*@
+            </td>
+        </tr>
+    }
+
+</table>
+

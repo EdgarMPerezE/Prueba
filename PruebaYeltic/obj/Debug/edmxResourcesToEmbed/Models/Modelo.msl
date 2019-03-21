@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_PruebaYelticModelStoreContainer" CdmEntityContainer="BD_PruebaYelticEntities">
+    <EntitySetMapping Name="CatPuestos">
+      <EntityTypeMapping TypeName="BD_PruebaYelticModel.CatPuestos">
+        <MappingFragment StoreEntitySet="CatPuestos">
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="varPuesto" ColumnName="varPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatSucursales">
+      <EntityTypeMapping TypeName="BD_PruebaYelticModel.CatSucursales">
+        <MappingFragment StoreEntitySet="CatSucursales">
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="varSursal" ColumnName="varSursal" />
+          <ScalarProperty Name="varDireccion" ColumnName="varDireccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="BD_PruebaYelticModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="varNombre" ColumnName="varNombre" />
+          <ScalarProperty Name="varPrimerApellido" ColumnName="varPrimerApellido" />
+          <ScalarProperty Name="varSegundoApellido" ColumnName="varSegundoApellido" />
+          <ScalarProperty Name="varSexo" ColumnName="varSexo" />
+          <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
